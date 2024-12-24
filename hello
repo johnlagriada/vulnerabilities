@@ -1,0 +1,13 @@
+1. SQL Injection (in the POST request):
+SQL Injection is a type of attack where an attacker injects malicious SQL code into input fields (such as the email in your request) to manipulate database queries. 
+In your POST request, "email":"or 1'=1'" is an example of SQL Injection. 
+If the web application is vulnerable to SQL Injection, this could lead to returning sensitive information or manipulating the database.
+
+2. Insecure Direct Object References (IDOR) or Session Fixation (in the GET request to /whoami):
+The GET request to /whoami appears to be attempting to access user information based on the session (like the cookie). 
+If the session ID provided is leaked or easy to guess, it could lead to unauthorized access to another user's information. 
+If there are no proper security checks (like session validation or token expiration), this becomes a vulnerability.
+
+3. Lack of Proper Input Validation:
+In your POST request, the application doesn't ensure that the input is properly validated before being submitted. 
+Providing an email with an SQL injection payload ("or 1'=1'") shows a lack of proper input validation and sanitization.
